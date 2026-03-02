@@ -4,7 +4,7 @@ import {ShmitterContext} from "../utils/context.js";
 
 const Stats = () => {
     const {user,stats,setStats} = useContext(ShmitterContext);//или декструризацию {user,stats}
-    const handleMouseDown = (e) => {
+    const upDownMouseAct = (e) => {
         if (e.button === 0) {
             setStats(prev => ({
                 ...prev,
@@ -20,7 +20,7 @@ const Stats = () => {
             }));
         }
     }
-    const handleMouseDown2 = (e) => {
+    const upDownMouseAct2 = (e) => {
         if (e.button === 0) {
             setStats(prev => ({
                 ...prev,
@@ -43,12 +43,12 @@ const Stats = () => {
                 {user.name}
             </div>
             <div className={'stats'}>
-                <div onMouseDown={handleMouseDown}
+                <div onMouseDown={upDownMouseAct}
                      onContextMenu={(e) => e.preventDefault()}
                      style={{cursor: 'pointer'}}
                 >
                     Followers:{stats.followers}</div>
-                <div onMouseDown={handleMouseDown2}
+                <div onMouseDown={upDownMouseAct2}
                                 onContextMenu={(e) => e.preventDefault()}
                                 style={{cursor: 'pointer'}}>
                     Following:{stats.following}</div>
