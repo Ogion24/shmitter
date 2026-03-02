@@ -14,14 +14,14 @@ function App() {
 
     const [stats, setStats] = useState({
         followers: 10,
-        following: 100
+        following: 11
     })
 const changeAvatar = url => setUser({ ...user, avatar: url || user.avatar});
 
     return (
         <div className={'app'}>
             <ShmitterContext value={{//заменяет пропс дриллинг (от компонента в компонент,по наследованию )
-                user, stats, changeAvatar //user: user, stats: stats если названия одинаковые ->>можно упрощенный вариант
+                user, stats, changeAvatar, setStats //user: user, stats: stats если названия одинаковые ->>можно упрощенный вариант
             }} >
             <Navigation />
             <Body />

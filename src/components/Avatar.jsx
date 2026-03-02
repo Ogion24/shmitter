@@ -3,15 +3,19 @@ import {ShmitterContext} from "../utils/context.js";
 
 const Avatar = ({size}) => {
     const {user, changeAvatar} = useContext(ShmitterContext);//хук принимает контекст ,а возвращает вэлью
-    return (
-        <img
-            onClick={() =>{
+    const rightClickNew = (e) => {
+        e.preventDefault();//откл меню пр клав
         const url = prompt('Enter avatar URL');
-            changeAvatar(url);
-        }}
-            className={`user-avatar ${size ?? ''}`}
-             src= {user.avatar}
-             alt= {user.name}/>
+        changeAvatar(url);
+
+    }
+    return (
+        <div onContextMenu={rightClickNew}>
+            <img
+                className={`user-avatar ${size ?? ''}`}
+                src={user.avatar}
+                alt={user.name}/>
+        </div>
     );
 };
 
