@@ -1,30 +1,26 @@
-import {useContext} from "react";
-import {ShmitterContext} from "../utils/context.js";
+import {useDispatch, useSelector} from "react-redux";
+import {changeAvatar, changeName} from "../actions/userActions.js";
 
 const Avatar = ({size}) => {
-    const {user, changeAvatar,changeAvatarName} = useContext(ShmitterContext);//хук принимает контекст ,а возвращает вэлью
-    const rClickName = (e) => {
-        e.preventDefault();//откл меню пр клав
-        const name = prompt('Enter avatar name');
-        changeAvatarName(name);
-    }
-const clickAvatar = () => {
-    const url = prompt('Enter avatar URL');
-    changeAvatar(url);
-}
+    const {avatar, name} = useSelector(state => state.user);
+    const dispatch = useDispatch();//меняет состояние
+
     return (
         <img
-            onClick={clickAvatar}
-            onContextMenu={rClickName}
+            onClick={() => {
+                const url = prompt('Enter avatar URL');
+                dispatch(changeAvatar(url));
+            }}
+            onContextMenu={e => {
+                e.preventDefault();
+                const name = prompt('Enter new name');
+                dispatch(changeName(name));
+            }}
             className={`user-avatar ${size ?? ''}`}
-            src= {user.avatar}
-            alt= {user.name}/>
-    );
-};
+            src={avatar}
+            alt={name}
+        />
+    )
+}
 
 export default Avatar;
-
-//const rightClickNew = (e) => {
-//         e.preventDefault();//откл меню пр клав
-//         const url = prompt('Enter avatar URL');
-//         changeAvatar(url);
