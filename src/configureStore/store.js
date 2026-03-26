@@ -1,5 +1,6 @@
-import {createStore} from "redux";
-import {shmitterReducer} from "../reducer/shmitterReducer.js";
+import {legacy_createStore as createStore} from "redux";
+
+import {rootReducer} from "../reducer/rootReducer.js";
 
 const initialState = {
     user: {
@@ -12,4 +13,4 @@ const initialState = {
     }
 }
 
-export const store = createStore(shmitterReducer, initialState);
+export const store = createStore(rootReducer, initialState);
