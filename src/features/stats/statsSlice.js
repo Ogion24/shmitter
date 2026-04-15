@@ -12,7 +12,7 @@ const statsSlice = createSlice({
                 const res = state[action.payload.statsType] + action.payload.sum;
                 state[action.payload.statsType] = res < 0 ? 0 : res;
             },
-            prepare: (statsType, sum) => ({payload: {statsType, sum}})
+            prepare: (statsType, sum) => ({payload: {statsType, sum}})//запускает сначала prepare,а потом reducer
         }
     }
 }) //statsSlice  генерирует экшен : у которого  Type -->> stats/changeStats,а payload= то что принимает экшенкриэйтр
