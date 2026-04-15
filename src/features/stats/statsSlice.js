@@ -12,7 +12,7 @@ const statsSlice = createSlice({
             state[action.payload.statsType] = res < 0 ? 0 : res;
         }
     }
-})
+}) //statsSlice  генерирует экшен : у которого  Type -->> stats/changeStats,а payload= то что принимает экшенкриэйтр
 
 export const {changeStats} = statsSlice.actions;//по умолчанию передает только 1 аргумент--->>> нужно передавать объект(Stats:20,23,28,31)
 export default statsSlice.reducer;

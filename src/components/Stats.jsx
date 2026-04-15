@@ -17,7 +17,7 @@ const Stats = () => {
             <div className={'stats'}>
                 <div
                     style={{cursor: 'pointer'}}
-                    onClick={() => dispatch(changeStats({statsType:'followers',sum: 1}))}
+                    onClick={() => dispatch(changeStats({statsType:'followers',sum: 1}))}//создает Type -->> stats/changeStats поэтому добавили statsType как объект
                     onContextMenu={(e) => {
                         e.preventDefault();
                         dispatch(changeStats({statsType:'followers',sum:-1}));
